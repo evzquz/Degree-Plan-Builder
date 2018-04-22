@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+.btn-group button {
+    background-color: maroon; /* Green background */
+    border: 1px solid gray; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 50%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: grey;
+}
+.column-left{ float: left; width: 45%; }
+.column-right{ float: right; width: 55%; }
+.somepadding{padding-bottom:250px;}
+</style>
+    <head>
+   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Create Summary</title>
+        <link href="/LayoutScript/CSS/Style.css" rel="stylesheet" type="text/css" /> 
+       
+                
+    </head>
+
+<body>
+
+<header class = "headerTop">
+         <h1 align="center">
+              DEGREE PLAN BUILDER
+          </h1>
+        </header>  
+        
+<div align="center" class="column-right">
+                <h3>Courses selected will go here</h3>
+                 _________________________________________________
+                 <br><br>
+                 <h4 class="somepadding">
+
+			  CHNS 131
+
+
+                 </h4>
+                  <button id="Submit">Submit</button>
+                </div>
+
+        
+        <div align="center" class="column-left">
+                <h3>Select Major Requirement Courses</h3>
+                 _________________________________________________
+		<div class="container" >
+		    <b>Choose a Department:</b>
+		</div><br>
+		<select size="1" id="Rank" title="" name="Rank">
+		    <option value="">-Select Your DEPT-</option>
+		    <option value="devStudies">Dev Studies</option>
+		    <option value="english">English</option>
+		    <option value="foreignLang">Foreign Lang</option>
+		</select>
+
+		<br><br><br>
+		<div class="container">
+		    <b>Choose a Subject from the selected Department:</b>
+		</div><br>
+
+		<div class="container1">
+		    <div class="devStudies">
+			<select>
+			    <option>Reading ed</option>
+			</select>
+		    </div>
+		    <div class="english">
+			<select>
+			    <option>english</option>
+			    <option>writing</option>
+			</select>
+		    </div>
+		     <div class="foreignLang">
+			<select>
+			    <option>african Lang</option>
+			    <option>Chinese</option>
+			    <option>French</option>
+			    <option>Social Work</option>
+			</select>
+		    </div>   
+		</div><br><br>
+ 
+
+               <div class="container" >
+		    <b>Choose Courses from the selected Subject:</b>
+		</div><br>
+		
+		
+		<div class="container" >
+  <div class= "component">
+
+    <div id="english" class="">
+      <% for (var i = 0; i < 4; i++) {%>
+        <input type="checkbox" id="course" value="<%= data[i].course_id %>">
+        <%= data[i].course_id %>
+          <% } %>
+    </div>
+  </div>
+		
+</div>
+
+ <p id="demo"></p>
+
+ 
+
+
+   
+  <script src="/create.js"></script>
+</body>
+</html>
+
