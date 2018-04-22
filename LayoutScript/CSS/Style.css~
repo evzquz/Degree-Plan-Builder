@@ -1,9 +1,4 @@
-.buttonLayout{
-margin: center;
-text-align: center;
-padding: 10px;
-background-color: cornflowerblue;
-}
+
 .headerTop{
 background-color: black;
 }
