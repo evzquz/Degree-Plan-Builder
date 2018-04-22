@@ -12,7 +12,7 @@ application.use(express.static(__dirname + "/public"));
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'imtheone2016',
+  password: '',
   database: 'degPlanDB'
 });
 
@@ -36,22 +36,12 @@ var q = "SELECT COURSE.course_id, COURSE.credit_hours, COURSE.TCCNS, COURSE_SUBJ
 });
 
 
-function all(req, res, next){
-  var q = "SELECT course_id from COURSE ";
-  connection.query(q, function(err, row){
-    if(err) throw err;
-    req.course_id = row;
-    req.credit_hours = row;
-    req.TCCNS = row;
-    req.component_id = row;
-    return next();
-  });
-}
+
 
 
  
 application.get("*", function (req, res) {
-  res.send("Page not found");
+  res.send("Error");
 });
 
 application.listen(8000, function () {
