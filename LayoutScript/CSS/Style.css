@@ -1,0 +1,22 @@
+body{
+background-color: maroon;
+color: white;
+}
+
+.headerTop{
+padding-top: 5px;
+background-color: white;
+font-size: 20px;
+color: black;
+}
+
+form(
+align-content: left;
+
+}
+resultFound{
+background-color: green;
+padding: 5px;
+}
+
+

@@ -1,0 +1,23 @@
+.buttonLayout{
+margin: center;
+text-align: center;
+padding: 10px;
+background-color: cornflowerblue;
+}
+.headerTop{
+background-color: black;
+}
+form(
+align-content: left;
+
+}
+body{
+background-color: red;
+}
+resultFound{
+background-color: green;
+padding: 5px;
+}
+input: hover{
+background-color: purple;
+}
