@@ -1,3 +1,4 @@
+
 /*navigate to home page*/
 var express = require('express');
 var application = express();
@@ -17,71 +18,68 @@ const connection = mysql.createConnection({
 });
 
 
+function deptMenu(req, res, next){
+	var dbRequest = "SELECT deparment_name, department_id FROM DEPARTMENT";
+ 	connection.connect(function (err) {
 
-application.get("/", function (req, res) {
-var q = "SELECT deparment_name, department_id FROM DEPARTMENT";
-var r = "SELECT COURSE.course_id, COURSE.credit_hours, COURSE.TCCNS, COURSE_SUBJECT.COURSE_SUBJECT_id FROM COURSE INNER JOIN COURSE_SUBJECT ON COURSE.COURSE_SUBJECT_id = 14 ORDER BY COURSE_SUBJECT_id";
-
-  connection.connect(function (err) {
-    if (err) throw err;
-    connection.query(q, function (err, result) {
-      if (err) throw err;
-      result = JSON.stringify(result);
-      result = JSON.parse(result);
-      console.log(result);
-      res.render("majorReqmts", { data: result });
-      
-    }); 
-    
-    
-  });
-});
-
-
-function all(req, res, next){
-var q = "SELECT deparment_name FROM DEPARTMENT";
-  connection.query(q, function(err, row){
+		 connection.query(dbRequest, function(err, row){
     if(err) throw err;
+row = JSON.stringify(row);
+      row = JSON.parse(row);
+          	console.log(row);
+    
     req.department_id = row;
-    req.deparment_name = row;
-    req.course_id = row;
-    req.credit_hours = row;
-    req.TCCNS = row;
-    req.component_id = row;
-    return next();
-  });
-}
+       
+    	 next();
+        }
+        )}
+        )};
+        
+        function subjMenu(req, res, next){
+	var dbRequest = "SELECT course_subject_description, department_id FROM COURSE_SUBJECT WHERE department_id= 1160";
+ 	connection.connect(function (err) {
 
-
-
-/*
-application.get("/", function (req, res) {
-var q = "SELECT COURSE.course_id, COURSE.credit_hours, COURSE.TCCNS, COURSE_SUBJECT.COURSE_SUBJECT_id FROM COURSE INNER JOIN COURSE_SUBJECT ON COURSE.COURSE_SUBJECT_id = 14 ORDER BY COURSE_SUBJECT_id";
-  connection.connect(function (err) {
-    if (err) throw err;
-    connection.query(q, function (err, result) {
-      if (err) throw err;
-      result = JSON.stringify(result);
-      result = JSON.parse(result);
-      //console.log(result);
-      res.render("majorReqmts", { data: result });
-    });  
-  });
-
-});
-
-
-function all(req, res, next){
-  var q = "SELECT course_id from COURSE ";
-  connection.query(q, function(err, row){
+		 connection.query(dbRequest, function(err, row){
     if(err) throw err;
-    req.course_id = row;
-    req.credit_hours = row;
-    req.TCCNS = row;
-    req.component_id = row;
-    return next();
+row = JSON.stringify(row);
+      row = JSON.parse(row);
+          	console.log(row);
+    
+    req.course_subject_description = row;
+       
+    	 next();
+        }
+        )}
+        )};
+        
+  function courseMenu(req, res, next){
+	var dbRequest = "SELECT course_id,COURSE_SUBJECT_id FROM COURSE WHERE COURSE_SUBJECT_id = 14";
+	
+		connection.query(dbRequest, function(err, row) {
+
+	    if(err) throw err;
+	    
+	        req.course_id = row;
+	    
+    	 next();
+        }
+       )};      
+        
+  function renderPage(req, res){
+  
+  res.render('majorReqmts', {
+  data1: req.department_id,
+  data2: req.course_id,
+  data3: req.course_subject_description
   });
-}
+  
+  
+  
+  }
+  application.get('/', deptMenu, subjMenu, courseMenu, renderPage);
+        
+			
+
 
 */
  
