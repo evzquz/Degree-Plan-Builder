@@ -32,6 +32,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Create Summary</title>
         <link href="/LayoutScript/CSS/Style.css" rel="stylesheet" type="text/css" /> 
+        
+        <script>
+function myFunction() {
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("text");
+    if (checkBox.checked == true){
+        text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+}
+</script>
+
+        
+        
        
                 
     </head>
@@ -50,6 +65,7 @@
                  <br><br>
                  <h4 class="somepadding">
 
+			  CHNS 131
 
 
                  </h4>
@@ -65,10 +81,10 @@
 		</div><br>
 		<select size="1" id="Rank" title="" name="Rank">
 		    
-		    <div id="dept" class="">
-      <% for (var i = 0; i < 38; i++) {%>
-        <option id="course" value="<%= data[i].department_id %>">
-        <%= data[i].deparment_name %>
+		    <div id="dept" class="ok">
+      <% for (var i = 0; i < data1.length; i++) {%>
+        <option id="course" value="selection">
+        <%= data1[i].deparment_name %>
           <% } %></option>
     </div>    
 		</select>
@@ -77,47 +93,27 @@
 		<div class="container">
 		    <b>Choose a Subject from the selected Department:</b>
 		</div><br>
+		
+		
 
 
 	<div class="container1">
 	
-			<div class="767">
+			
+			<div class="selection">
 				<select>
-					<option>Reading  Education</option>
+					
+					<div id="subj" class="">
+      <% for (var i = 0; i < data3.length; i++) {%>
+        <option id="course" value=" ">
+        <%= data3[i].course_subject_description %>
+          <% } %></option>
+    </div>    
+					
+					
 				</select>
 			</div>
-			<div class="990">
-				<select>
-					<option>English</option>
-					<option>Writing</option>
-				</select>
-			</div>
-			<div class="1160">
-				<select>
-					<option>African Languages</option>
-					<option value="chinese">Chinese</option>
-					<option>French</option>
-					<option>Spanish</option> 
-				</select>
-			</div>
-			<div class="1460">
-				<select>
-					<option>African Studies</option>
-					<option>Geography</option>
-					<option>History</option>
-				</select>
-			</div>
-			<div class="1564">
-				<select>
-					<option>AD</option>
-					<option>Child & Family</option>
-					<option>Clothing/Textile</option>
-					<option>Family Consumer Sciences</option>
-					<option>Foods & Nutrition</option>
-					<option>Human Servsv & Consumer Sci</option>
-					<option>Nutritian</option>
-				</select>
-			</div>
+			
 
 	
 	
@@ -133,13 +129,22 @@
 		<div class="container" >
   <div class= "component">
 
-    <div id="" class="">
-      <% for (var i = 0; i < 4; i++) {%>
-        <input type="checkbox" id="course" value="<%= data[i].department_id %>">
-        <%= data[i].deparment_name %>
+
+
+    <div id="" class="" >
+      <% for (var i = 0; i < data2.length; i++) {%>
+        <input type="checkbox" id="myCheck" onclick="myFunction()"  value="<%= data2[i].course_id %>">
+        <%= data2[i].course_id %>
           <% } %>
     </div>
+            <p id="text" style="display:none">classes</p>
+        
+
+
+        
+    
   </div>
+
 		
 </div>
 
