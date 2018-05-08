@@ -14,7 +14,7 @@ form(
 align-content: left;
 
 }
-resultFound{
+resultFound{ 
 background-color: green;
 padding: 5px;
 }
