@@ -13,7 +13,7 @@ application.use(express.static(__dirname + "/public"));
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'imtheone2016',
+  password: '',
   database: 'degPlanDB'
 });
 
@@ -33,10 +33,11 @@ row = JSON.stringify(row);
     	 next();
         }
         )}
+        
         )};
         
         function subjMenu(req, res, next){
-	var dbRequest = "SELECT course_subject_description, department_id FROM COURSE_SUBJECT WHERE department_id= 1160";
+	var dbRequest = "SELECT course_subject_description, department_id FROM COURSE_SUBJECT";
  	connection.connect(function (err) {
 
 		 connection.query(dbRequest, function(err, row){
@@ -53,7 +54,7 @@ row = JSON.stringify(row);
         )};
         
   function courseMenu(req, res, next){
-	var dbRequest = "SELECT course_id,COURSE_SUBJECT_id FROM COURSE WHERE COURSE_SUBJECT_id = 14";
+	var dbRequest = "SELECT course_id,COURSE_SUBJECT_id FROM COURSE WHERE COURSE_SUBJECT_id=14";
 	
 		connection.query(dbRequest, function(err, row) {
 
@@ -79,9 +80,6 @@ row = JSON.stringify(row);
   application.get('/', deptMenu, subjMenu, courseMenu, renderPage);
         
 			
-
-
-*/
  
 application.get("*", function (req, res) {
   res.send("Page not found");
