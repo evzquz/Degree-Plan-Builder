@@ -1,2 +1,2 @@
 # Degree-Plan-Builder
-For TSU CS499 Capstone Project
+In progress Please read Vision and Scope Document.
