@@ -1,2 +1,2 @@
 # Degree-Plan-Builder
-In progress Please refer to Project Plan
+In progress. Please refer to Project Plan
